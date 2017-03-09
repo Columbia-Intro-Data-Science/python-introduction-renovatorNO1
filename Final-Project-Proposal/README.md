@@ -26,6 +26,7 @@ We will utilize a prescriptive machine learning model to produce a list of prope
  
 ##User Interaction
 We are going to build an interactive website for users to input their preferences. A Python kernel will be running behind the scene to process user inputs with machine learning algorithms. When the algorithms are completed, price predictions and property recommendations will be shown to users. 
-![Alt text](img/dream-home-blog.jpg)
+
+<img src="img/dream-home-blog.jpg" width="100">
 ##Reference
 Link for property prices in NYC: http://www1.nyc.gov/site/finance/taxes/property-rolling-sales-data.page
