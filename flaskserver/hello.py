@@ -45,6 +45,9 @@ def hello():
 @app.route('/predict', methods=['POST'])
 def predict():
     import json
+    #import pickle
+    #with open('model/model.pkl', 'rb') as f:
+    #    clf = pickle.load(f) 
     if clf:
         try:
             #json_ = request.json
