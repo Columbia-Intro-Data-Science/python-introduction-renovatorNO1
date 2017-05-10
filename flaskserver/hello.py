@@ -21,8 +21,8 @@ model_columns_file_name = '%s/model_columns.pkl' % model_directory
 
 
 @app.route('/', methods=['GET', 'POST'])
-def login():
-    return render_template('form.html')
+def start():
+    return render_template('index.html')
 
 @app.route('/result',methods = ['POST', 'GET'])
 def result():
@@ -54,6 +54,7 @@ def predict():
             json_ = json.loads(json_string)
             for key, value in json_.items():
                 json_[key] = int(value)
+                #print(key, value)
             #query = pd.DataFrame(json_)
             
             
@@ -62,9 +63,14 @@ def predict():
              
             df_user=pd.DataFrame(data=json_, index=np.arange(1))
 
-            prediction = list(clf.predict(df_user))
+            prediction = clf.predict(df_user)
+            prices = {1: '$0 ~ $200000', 2: "$200000 ~ $400000", 3: "$400000 ~ $600000", 4: "$600000 ~ $800000", 5: "$800000 ~ $1000000", 6: "above $1000000"}
+            message = "The expected price of this real estate property is "
+            result = prices[prediction[0]]
+            result = message + result
+            Result = "<!doctype html> <html> <body> <p>"+ result + "</p><tr> </body></html>"
 
-            return jsonify({'prediction': prediction})
+            return Result
 
         except Exception as e:
 
@@ -102,6 +108,7 @@ def train():
     from sklearn.linear_model import LinearRegression
     import numpy.random as nprnd
     from sklearn.tree import DecisionTreeRegressor
+    from sklearn.ensemble import RandomForestRegressor
 
     df = pd.read_csv(training_data, index_col=0)
 
@@ -144,52 +151,94 @@ def train():
 
     zipcodes = [11239, 11236,11208,11207,11234,11203,11212,11224,11210,
             11229,11233,11228,11204,11214,11221,11209,11235,11213,11223,11220,
-            11219,11218,11230,11226,11232,11237,11216,11225,11231,11215,11222,11217,11238,11206,11205,11211,11249,11201]
+            11219,11218,11230,11226,11232,11237,11216,11225,11231,11215,11222,
+            11217,11238,11206,11205,11211,11249,11201]
     taxclass = [1,2,4]
 
     add_zipcode(zipcodes)
     add_taxclass(taxclass)
-    #add_buildingclass(buildingclass)
-
+    #add_buildingclass(buildingclass)   
     
-    
-    # Set the upper bound of the price
-    def classify_y(price):
+    def classify_ranges():
         for pos in range(0,8497):
-            if y.iloc[pos]['SALE_PRICE'] >= price:
+            if y.iloc[pos]['SALE_PRICE'] <= 200000 and y.iloc[pos]['SALE_PRICE'] >= 0:
                 y_classified.set_value(pos+1, 'SALE_PRICE', 1)
+            elif y.iloc[pos]['SALE_PRICE'] <= 400000 and y.iloc[pos]['SALE_PRICE'] >= 200000: 
+                y_classified.set_value(pos+1, 'SALE_PRICE',2)
+            elif y.iloc[pos]['SALE_PRICE'] <= 600000 and y.iloc[pos]['SALE_PRICE'] >= 400000: 
+                y_classified.set_value(pos+1, 'SALE_PRICE',3)
+            elif y.iloc[pos]['SALE_PRICE'] <= 800000 and y.iloc[pos]['SALE_PRICE'] >= 600000: 
+                y_classified.set_value(pos+1, 'SALE_PRICE',4)
+            elif y.iloc[pos]['SALE_PRICE'] <= 1000000 and y.iloc[pos]['SALE_PRICE'] >= 800000: 
+                y_classified.set_value(pos+1, 'SALE_PRICE',5)
             else: 
-                y_classified.set_value(pos+1, 'SALE_PRICE',0)
+                y_classified.set_value(pos+1, 'SALE_PRICE',6)
             
-    # Set the lower bound of the price            
-    def classify_y_down(price):
-        for pos in range(0,8497):
-            if y.iloc[pos]['SALE_PRICE'] <= price:
-                y_classified.set_value(pos+1, 'SALE_PRICE', 1)
-            else: 
-                y_classified.set_value(pos+1, 'SALE_PRICE',0)
-            
-            
-    def classify_y_range(low, high):
-        for pos in range(0,8497):
-            if y.iloc[pos]['SALE_PRICE'] <= high & y.iloc[pos]['SALE_PRICE'] >= low:
-                y_classified.set_value(pos+1, 'SALE_PRICE', 1)
-            else: 
-                y_classified.set_value(pos+1, 'SALE_PRICE',0)
             
        
     X = X.drop(['ZIPCODE','TAX_CLASS'], 1)
+    
+    
+    #Classify ranges
+    classify_ranges()
+    
+    from time import time
+    import numpy as np
+    import matplotlib.pyplot as plt
+    
+    from sklearn import metrics
+    from sklearn.cluster import KMeans
+    from sklearn.datasets import load_digits
+    from sklearn.decomposition import PCA
+    from sklearn.preprocessing import scale
+    
+    np.random.seed(42)
+    
+    #digits = load_digits()
+    data = scale(X.values)
+    
+    n_samples, n_features = data.shape
+    n_digits = len(np.unique(y_classified.values))
+    labels = (y_classified.values).flatten('F')
+    
+    target_names =np.unique(labels)
+    print(target_names)
+    
+    # This might cause some issues
+    sample_size = 8497
+
+
+    def bench_k_means(estimator, name, data):
+        t0 = time()
+        estimator.fit(data)
+        print('% 9s   %.2fs    %i   %.3f   %.3f   %.3f   %.3f   %.3f    %.3f'
+              % (name, (time() - t0), estimator.inertia_,
+                 metrics.homogeneity_score(labels, estimator.labels_),
+                 metrics.completeness_score(labels, estimator.labels_),
+                 metrics.v_measure_score(labels, estimator.labels_),
+                 metrics.adjusted_rand_score(labels, estimator.labels_),
+                 metrics.adjusted_mutual_info_score(labels,  estimator.labels_),
+                 metrics.silhouette_score(data, estimator.labels_,
+                                          metric='euclidean',
+                                          sample_size=sample_size)))
+        return estimator
+
+    k_means = bench_k_means(KMeans(init='k-means++', n_clusters=n_digits, n_init=10),
+              name="k-means++", data=data)
+    
     # capture a list of columns that will be used for prediction
     global model_columns
     model_columns = list(X.columns)
     joblib.dump(model_columns, model_columns_file_name)
 
     global clf
-    clf = DecisionTreeRegressor(max_depth=3)
-    start = time.time()
-    clf.fit(X, y)
-    print ('Trained in %.1f seconds' % (time.time() - start))
-    print ('Model training score: %s' % clf.score(X, y))
+    clf = k_means
+    #clf = DecisionTreeRegressor(max_depth=3)
+    #clf = RandomForestRegressor(n_estimators=10, min_samples_split=2) 
+    #start = time.time()
+    #clf.fit(X, y)
+    #print ('Trained in %.1f seconds' % (time.time() - start))
+    #print ('Model training score: %s' % clf.score(X, y))
 
     joblib.dump(clf, model_file_name)
 

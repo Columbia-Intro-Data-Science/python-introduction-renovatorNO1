@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Imperial Boootstrap Template</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+    
+  <!-- Facebook Opengraph integration: https://developers.facebook.com/docs/sharing/opengraph -->
+  <meta property="og:title" content="">
+  <meta property="og:image" content="">
+  <meta property="og:url" content="">
+  <meta property="og:site_name" content="">
+  <meta property="og:description" content="">
+  
+  <!-- Twitter Cards integration: https://dev.twitter.com/cards/  -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="">
+  <meta name="twitter:title" content="">
+  <meta name="twitter:description" content="">
+  <meta name="twitter:image" content="">
+  
+  <!-- Place your favicon.ico and apple-touch-icon.png in the template root directory -->
+  <!--<link href="favicon.ico" rel="shortcut icon">-->
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800" rel="stylesheet"> 
+  
+  <!-- Bootstrap CSS File -->
+  <link href="{{ url_for('static',filename='lib/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  
+  <!-- Libraries CSS Files -->
+  <link href="{{ url_for('static',filename='lib/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static',filename='lib/animate-css/animate.min.css') }}" rel="stylesheet">
+  
+  <!-- Main Stylesheet File -->
+  <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet">
+  
+<!-- =======================================================
+  Theme Name: Imperial
+  Theme URL: https://bootstrapmade.com/imperial-free-onepage-bootstrap-theme/
+  Author: BootstrapMade.com
+  Author URL: https://bootstrapmade.com
+======================================================= -->
+</head>
+
+<body>
+  <div id="preloader"></div>
+  
+<!--==========================
+  Hero Section
+============================-->
+  <section id="hero">
+    <div class="hero-container">
+      <div class="wow fadeIn">
+        <div class="hero-logo">
+          <img class="" src="{{ url_for('static',filename='img/logo.png') }}" alt="Imperial">
+        </div>
+        
+        <h1>Welcome to Imperial studios</h1>
+        <h2>We create <span class="rotating">beautiful graphics, functional
+        websites, working mobile apps</span></h2>
+        <div class="actions">
+          <a href="#predict" class="btn-get-started">predict current price</a>
+          <a href="#services" class="btn-services">which neighborhood 
+          is more valuable</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+<!--==========================
+  Header Section
+============================-->
+  <header id="header">
+    <div class="container">
+    
+      <div id="logo" class="pull-left">
+        <a href="#hero"><img src="{{ url_for('static',filename='img/logo.png') }}" alt="" title="" /></img></a>
+        <!-- Uncomment below if you prefer to use a text image -->
+        <!--<h1><a href="#hero">Header 1</a></h1>-->
+      </div>
+        
+    
+    </div>
+  </header><!-- #header -->
+
+<!--==========================
+  Contact Section
+============================--> 
+<section id="predict">
+    <div class="container wow fadeInUp">
+      <div class="row">
+        <div class="col-md-12">
+          <h3 class="section-title">Choose parameters</h3>
+          <div class="section-title-divider"></div>
+          <p class="section-description">Choose relevant parameters</p>
+        </div>
+      </div>
+      
+        
+        <div class="col-md-5 col-md-push-2">
+          <div class="form">
+             <form action = "http://127.0.0.1:80/predict" method = "POST">
+             <p>RESIDENTIAL_UNITS <input type = "text" value="0" name = "RESIDENTIAL_UNITS" /></p>
+             <p>COMMERCIAL_UNITS<input type = "text" value="0" name = "COMMERCIAL_UNITS" /></p>
+             <p>GROSS_SQUARE_FEET <input type = "text" value="0" name = "GROSS_SQUARE_FEET" /></p>
+             <p>AGE <input type = "text" value="0" name = "AGE" /></p>
+             <p>11207 <input type ="text" value="0" name = "11207" /></p>
+             <p>11239 <input type ="text" value="0" name = "11239" /></p>
+             <p>11236 <input type ="text" value="0" name = "11236" /></p>
+             <p>11208 <input type ="text" value="0" name = "11208" /></p>
+             <p>11234 <input type ="text" value="0" name = "11234" /></p>
+             <p>11203 <input type ="text" value="0" name = "11203" /></p>
+             <p>11212 <input type ="text" value="0" name = "11212" /></p>
+             <p>11224 <input type ="text" value="0" name = "11224" /></p>
+             <p>11210 <input type ="text" value="0" name = "11210" /></p>
+             <p>11229 <input type ="text" value="0" name = "11229" /></p>
+             <p>11233 <input type ="text" value="0" name = "11233" /></p>
+             <p>11228 <input type ="text" value="0" name = "11228" /></p>
+             <p>11204 <input type ="text" value="0" name = "11204" /></p>
+             <p>11214 <input type ="text" value="0" name = "11214" /></p>
+             <p>11221 <input type ="text" value="0" name = "11221" /></p>
+             <p>11209 <input type ="text" value="0" name = "11209" /></p>
+             <p>11235 <input type ="text" value="0" name = "11235" /></p>
+             <p>11213 <input type ="text" value="0" name = "11213" /></p>
+             <p>11223 <input type ="text" value="0" name = "11223" /></p>
+             <p>11220 <input type ="text" value="0" name = "11220" /></p>
+             <p>11219 <input type ="text" value="0" name = "11219" /></p>
+             <p>11218 <input type ="text" value="0" name = "11218" /></p>
+             <p>11230 <input type ="text" value="0" name = "11230" /></p>
+             <p>11226 <input type ="text" value="0" name = "11226" /></p>
+             <p>11232 <input type ="text" value="0" name = "11232" /></p>
+             <p>11237 <input type ="text" value="0" name = "11237" /></p>
+             <p>11216 <input type ="text" value="0" name = "11216" /></p>
+             <p>11225 <input type ="text" value="0" name = "11225" /></p>
+             <p>11231 <input type ="text" value="0" name = "11231" /></p>
+             <p>11215 <input type ="text" value="0" name = "11215" /></p>
+             <p>11222 <input type ="text" value="0" name = "11222" /></p>
+             <p>11217 <input type ="text" value="0" name = "11217" /></p>
+             <p>11238 <input type ="text" value="0" name = "11238" /></p>
+             <p>11206 <input type ="text" value="0" name = "11206" /></p>
+             <p>11205 <input type ="text" value="0" name = "11205" /></p>
+             <p>11211 <input type ="text" value="0" name = "11211" /></p>
+             <p>11249 <input type ="text" value="0" name = "11249" /></p>
+             <p>11201 <input type ="text" value="0" name = "11201" /></p>
+             <p>TAX:1 <input type ="text" value="0" name = "TAX:1" /></p>
+             <p>TAX:2 <input type ="text" value="0" name = "TAX:2" /></p>
+             <p>TAX:4 <input type ="text" value="0" name = "TAX:4" /></p>
+
+         <p><input type = "submit" value = "submit" /></p>
+      </form>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+    
+
+<!--==========================
+  Footer
+============================--> 
+  <footer id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="copyright">
+              &copy; Copyright <strong>Imperial Theme</strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+              <!-- 
+                All the links in the footer should remain intact. 
+                You can delete the links only if you purchased the pro version.
+                Licensing information: https://bootstrapmade.com/license/
+                Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Imperial
+              -->
+              Bootstrap Themes by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+            </div>
+          </div>
+        </div>
+      </div>
+  </footer><!-- #footer -->
+  
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+    
+  <!-- Required JavaScript Libraries -->
+  <script src="{{ url_for('static',filename='lib/jquery/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static',filename='lib/jquery/jquery-migrate.min.js') }}"></script>
+  <script src="{{ url_for('static',filename='lib/bootstrap/js/bootstrap.min.js') }}"></script>
+  <script src="{{ url_for('static',filename='lib/superfish/hoverIntent.js') }}"></script>
+  <script src="{{ url_for('static',filename='lib/superfish/superfish.min.js') }}"></script>
+  <script src="{{ url_for('static',filename='lib/morphext/morphext.min.js') }}"></script>
+  <script src="{{ url_for('static',filename='lib/wow/wow.min.js') }}"></script>
+  <script src="{{ url_for('static',filename='lib/stickyjs/sticky.js') }}"></script>
+  <script src="{{ url_for('static',filename='lib/easing/easing.js') }}"></script> 
+  
+  <!-- Template Specisifc Custom Javascript File -->
+  <script src="{{ url_for('static',filename='js/custom.js') }}"></script>
+  
+  <!--<script src="{{ url_for('static',filename='contactform/contactform.js') }}"></script> -->
+  
+    
+</body>
+</html>
