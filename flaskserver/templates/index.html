@@ -58,13 +58,16 @@
           <img class="" src="{{ url_for('static',filename='img/logo.png') }}" alt="Imperial">
         </div>
         
-        <h1>Welcome to Imperial studios</h1>
+        <h1>Let's Predict Housing price</h1>
+        <!--
         <h2>We create <span class="rotating">beautiful graphics, functional
-        websites, working mobile apps</span></h2>
+        websites, working mobile apps</span></h2> -->
         <div class="actions">
           <a href="#predict" class="btn-get-started">predict current price</a>
+          <!--
           <a href="#services" class="btn-services">which neighborhood 
           is more valuable</a>
+          -->
         </div>
       </div>
     </div>
@@ -103,51 +106,175 @@
         <div class="col-md-5 col-md-push-2">
           <div class="form">
              <form action = "http://127.0.0.1:80/predict" method = "POST">
-             <p>RESIDENTIAL_UNITS <input type = "text" value="0" name = "RESIDENTIAL_UNITS" /></p>
-             <p>COMMERCIAL_UNITS<input type = "text" value="0" name = "COMMERCIAL_UNITS" /></p>
-             <p>GROSS_SQUARE_FEET <input type = "text" value="0" name = "GROSS_SQUARE_FEET" /></p>
-             <p>AGE <input type = "text" value="0" name = "AGE" /></p>
-             <p>11207 <input type ="text" value="0" name = "11207" /></p>
-             <p>11239 <input type ="text" value="0" name = "11239" /></p>
-             <p>11236 <input type ="text" value="0" name = "11236" /></p>
-             <p>11208 <input type ="text" value="0" name = "11208" /></p>
-             <p>11234 <input type ="text" value="0" name = "11234" /></p>
-             <p>11203 <input type ="text" value="0" name = "11203" /></p>
-             <p>11212 <input type ="text" value="0" name = "11212" /></p>
-             <p>11224 <input type ="text" value="0" name = "11224" /></p>
-             <p>11210 <input type ="text" value="0" name = "11210" /></p>
-             <p>11229 <input type ="text" value="0" name = "11229" /></p>
-             <p>11233 <input type ="text" value="0" name = "11233" /></p>
-             <p>11228 <input type ="text" value="0" name = "11228" /></p>
-             <p>11204 <input type ="text" value="0" name = "11204" /></p>
-             <p>11214 <input type ="text" value="0" name = "11214" /></p>
-             <p>11221 <input type ="text" value="0" name = "11221" /></p>
-             <p>11209 <input type ="text" value="0" name = "11209" /></p>
-             <p>11235 <input type ="text" value="0" name = "11235" /></p>
-             <p>11213 <input type ="text" value="0" name = "11213" /></p>
-             <p>11223 <input type ="text" value="0" name = "11223" /></p>
-             <p>11220 <input type ="text" value="0" name = "11220" /></p>
-             <p>11219 <input type ="text" value="0" name = "11219" /></p>
-             <p>11218 <input type ="text" value="0" name = "11218" /></p>
-             <p>11230 <input type ="text" value="0" name = "11230" /></p>
-             <p>11226 <input type ="text" value="0" name = "11226" /></p>
-             <p>11232 <input type ="text" value="0" name = "11232" /></p>
-             <p>11237 <input type ="text" value="0" name = "11237" /></p>
-             <p>11216 <input type ="text" value="0" name = "11216" /></p>
-             <p>11225 <input type ="text" value="0" name = "11225" /></p>
-             <p>11231 <input type ="text" value="0" name = "11231" /></p>
-             <p>11215 <input type ="text" value="0" name = "11215" /></p>
-             <p>11222 <input type ="text" value="0" name = "11222" /></p>
-             <p>11217 <input type ="text" value="0" name = "11217" /></p>
-             <p>11238 <input type ="text" value="0" name = "11238" /></p>
-             <p>11206 <input type ="text" value="0" name = "11206" /></p>
-             <p>11205 <input type ="text" value="0" name = "11205" /></p>
-             <p>11211 <input type ="text" value="0" name = "11211" /></p>
-             <p>11249 <input type ="text" value="0" name = "11249" /></p>
-             <p>11201 <input type ="text" value="0" name = "11201" /></p>
-             <p>TAX:1 <input type ="text" value="0" name = "TAX:1" /></p>
-             <p>TAX:2 <input type ="text" value="0" name = "TAX:2" /></p>
-             <p>TAX:4 <input type ="text" value="0" name = "TAX:4" /></p>
+             <table width="900" border="0">
+  <tbody>
+    <tr>
+      <td><p><span style="font-size: 18px">RESIDENTIAL_UNITS</span>
+               <input type = "text" value="0" name = "RESIDENTIAL_UNITS" />
+               </p></td>
+      <td><p><span style="font-size: 18px">COMMERCIAL_UNITS</span>
+               <input type = "text" value="0" name = "COMMERCIAL_UNITS" />
+               </p></td>
+      <td><p><span style="font-size: 18px">GROSS_SQUARE_FEET</span>
+               <input type = "text" value="0" name = "GROSS_SQUARE_FEET" />
+               </p></td>
+    </tr>
+    <tr>
+      <td><p><span style="font-size: 18px">AGE</span>
+               <input type = "text" value="0" name = "AGE" />
+               </p></td>
+      <td><p><span style="font-size: 18px">11201</span>
+               <input type ="text" value="0" name = "11201" />
+               </p></td>
+      <td> <p><span style="font-size: 18px">11203</span>
+               <input type ="text" value="0" name = "11203" />
+               </p></td>
+    </tr>
+    <tr>
+      <td><p><span style="font-size: 18px">11204</span>
+               <input type ="text" value="0" name = "11204" />
+               </p></td>
+      <td><p><span style="font-size: 18px">11205</span>
+               <input type ="text" value="0" name = "11205" />
+               </p></td>
+      <td> <p><span style="font-size: 18px">11206</span>
+               <input type ="text" value="0" name = "11206" />
+               </p></td>
+    </tr>
+    <tr>
+      <td><p><span style="font-size: 18px">11207</span>
+               <input type ="text" value="0" name = "11207" />
+               </p></td>
+      <td><p><span style="font-size: 18px">11208</span>
+               <input type ="text" value="0" name = "11208" />
+               </p></td>
+      <td> <p><span style="font-size: 18px">11209</span>
+                 <input type ="text" value="0" name = "11209" />
+               </p></td>
+    </tr>
+    <tr>
+      <td><p><span style="font-size: 18px">11210</span><span style="text-align: left">
+                 <input type ="text" value="0" name = "11210" />
+               </span></p></td>
+      <td><p><span style="font-size: 18px">11211</span>
+               <input type ="text" value="0" name = "11211" />
+               </p></td>
+      <td><p><span style="font-size: 18px">11212</span>
+               <input type ="text" value="0" name = "11212" />
+               </p></td>
+    </tr>
+    <tr>
+      <td><p><span style="font-size: 18px">11213</span>
+               <input type ="text" value="0" name = "11213" />
+               </p></td>
+      <td><p><span style="font-size: 18px">11214</span>
+               <input type ="text" value="0" name = "11214" />
+               </p></td>
+      <td><p><span style="font-size: 18px">11215</span>
+               <input type ="text" value="0" name = "11215" />
+               </p></td>
+    </tr>
+    <tr>
+      <td><p><span style="font-size: 18px">11216</span>
+               <input type ="text" value="0" name = "11216" />
+               </p></td>
+      <td>  <p><span style="font-size: 18px">11217</span>
+               <input type ="text" value="0" name = "11217" />
+               </p></td>
+      <td> <p><span style="font-size: 18px">11218</span>
+               <input type ="text" value="0" name = "11218" />
+               </p></td>
+    </tr>
+    <tr>
+      <td> <p><span style="font-size: 18px">11219 </span><span style="text-align: left">
+                 <input type ="text" value="0" name = "11219" />
+               </span></p></td>
+      <td><p><span style="font-size: 18px">11220</span>
+               <input type ="text" value="0" name = "11220" />
+               </p></td>
+      <td> <p><span style="font-size: 18px">11221</span>
+               <input type ="text" value="0" name = "11221" />
+               </p></td>
+    </tr>
+    <tr>
+      <td>  <p><span style="font-size: 18px">11222</span>
+               <input type ="text" value="0" name = "11222" />
+               </p></td>
+      <td> <p><span style="font-size: 18px">11223</span>
+               <input type ="text" value="0" name = "11223" />
+               </p></td>
+      <td> <p><span style="font-size: 18px">11224</span>
+               <input type ="text" value="0" name = "11224" />
+               </p></td>
+    </tr>
+    <tr>
+      <td> <p><span style="font-size: 18px">11225</span>
+               <input type ="text" value="0" name = "11225" />
+               </p></td>
+      <td><p><span style="text-align: left; font-size: 18px;">11226 
+                   <input type ="text" value="0" name = "11226" />
+                   </span></p></td>
+      <td><p><span style="text-align: left; font-size: 18px;">11228 
+                   <input type ="text" value="0" name = "11228" />
+                   </span></p></td>
+    </tr>
+    <tr>
+      <td><p><span style="text-align: left; font-size: 18px;">11229 
+                   <input type ="text" value="0" name = "11229" />
+                   </span></p></td>
+      <td><p><span style="text-align: left; font-size: 18px;">11230 
+                   <input type ="text" value="0" name = "11230" />
+                   </span></p></td>
+      <td> <p><span style="text-align: left; font-size: 18px;">11231 
+                   <input type ="text" value="0" name = "11231" />
+                   </span></p></td>
+    </tr>
+    <tr>
+      <td> <p><span style="text-align: left; font-size: 18px;">11232 
+                   <input type ="text" value="0" name = "11232" />
+                   </span></p></td>
+      <td><p><span style="text-align: left; font-size: 18px;">11233 
+                   <input type ="text" value="0" name = "11233" />
+                   </span></p></td>
+      <td><p><span style="text-align: left; font-size: 18px;">11234 
+                   <input type ="text" value="0" name = "11234" />
+                   </span></p></td>
+    </tr>
+    <tr>
+      <td>  <p><span style="text-align: left; font-size: 18px;">11235 
+                   <input type ="text" value="0" name = "11235" />
+                   </span></p></td>
+      <td> <p><span style="text-align: left; font-size: 18px;">11236 
+                   <input type ="text" value="0" name = "11236" />
+                   </span></p></td>
+      <td> <p><span style="text-align: left; font-size: 18px;">11237 
+                   <input type ="text" value="0" name = "11237" />
+                   </span></p></td>
+    </tr>
+     <tr>
+      <td> <p><span style="text-align: left; font-size: 18px;">11238 
+                   <input type ="text" value="0" name = "11238" />
+                   </span></p></td>
+      <td>  <p><span style="text-align: left; font-size: 18px;">11239 
+                   <input type ="text" value="0" name = "11239" />
+                   </span></p></td>
+      <td> <p><span style="text-align: left; font-size: 18px;">11249 
+                   <input type ="text" value="0" name = "11249" />
+                   </span></p></td>
+    </tr>
+     <tr>
+      <td> <p><span style="text-align: left; font-size: 18px;">TAX:1 
+                   <input type ="text" value="0" name = "TAX:1" />
+                   </span></p></td>
+      <td><p><span style="text-align: left; font-size: 18px;">TAX:2 
+                   <input type ="text" value="0" name = "TAX:2" />
+                   </span></p></td>
+      <td><p><span style="text-align: left; font-size: 18px;">TAX:4 
+                   <input type ="text" value="0" name = "TAX:4" />
+                   </span></p></td>
+    </tr>
+  </tbody>
+</table>
 
          <p><input type = "submit" value = "submit" /></p>
       </form>

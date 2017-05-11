@@ -5,7 +5,7 @@ import time
 import traceback
 import numpy as np
 
-from flask import Flask, request, jsonify, send_from_directory, render_template
+from flask import Flask, request, jsonify, render_template
 
 import pandas as pd
 from sklearn.externals import joblib
@@ -68,10 +68,23 @@ def predict():
 
             prediction = clf.predict(df_user)
             prices = {1: '$0 ~ $200000', 2: "$200000 ~ $400000", 3: "$400000 ~ $600000", 4: "$600000 ~ $800000", 5: "$800000 ~ $1000000", 6: "above $1000000"}
-            message = "The expected price of this real estate property is "
+            
+            message1 ='''<!doctype html>
+            <html>
+            <head>
+            <meta charset="UTF-8">
+            <title>Untitled Document</title>
+            </head>
+            <body background="static/img/After-the-rain-Brooklyn-Bridge.jpg" style="color: #F6EFEF; font-size: 36px; text-align: center;">
+            <h3>The expected price of this real estate property is</h3> <h3>
+            ''' 
+            message2 ='''
+            </h3>
+            </body>
+            </html>'''
             result = prices[prediction[0]]
-            result = message + result
-            Result = "<!doctype html> <html> <body> <p>"+ result + "</p><tr> </body></html>"
+            print(result)
+            Result = message1 + result + message2
 
             return Result
 
@@ -87,31 +100,10 @@ def train():
     # using random forest as an example
     # can do the training separately and just update the pickles
     import pandas as pd
-    import statsmodels.api as sm
-    from sklearn.cross_validation import KFold
-    from sklearn.metrics import confusion_matrix
-    from sklearn.preprocessing import StandardScaler
-    from sklearn.linear_model import LogisticRegression
-    from sklearn.svm import SVC
-    from sklearn.ensemble import RandomForestClassifier as RF
-    from sklearn.neighbors import KNeighborsClassifier as KNN
+    #from sklearn.neighbors import KNeighborsClassifier as KNN
     import numpy as np
-    import matplotlib.pyplot as plt
-    from sklearn.metrics import roc_curve, auc
-    from sklearn.utils import shuffle
-    from sklearn.metrics import roc_curve, auc
-    import pylab
-    from sklearn import svm
-    from sklearn.linear_model import LogisticRegression
-    from sklearn.linear_model import Ridge
-    from sklearn.ensemble import RandomForestClassifier
-    import re
-    import pylab as plt
-    import seaborn
-    from sklearn.linear_model import LinearRegression
-    import numpy.random as nprnd
-    from sklearn.tree import DecisionTreeRegressor
-    from sklearn.ensemble import RandomForestRegressor
+
+
 
     df = pd.read_csv(training_data, index_col=0)
 
@@ -185,14 +177,8 @@ def train():
     #Classify ranges
     classify_ranges()
     
-    from time import time
-    import numpy as np
-    import matplotlib.pyplot as plt
-    
     from sklearn import metrics
     from sklearn.cluster import KMeans
-    from sklearn.datasets import load_digits
-    from sklearn.decomposition import PCA
     from sklearn.preprocessing import scale
     
     np.random.seed(42)
@@ -243,7 +229,7 @@ def train():
     #print ('Trained in %.1f seconds' % (time.time() - start))
     #print ('Model training score: %s' % clf.score(X, y))
 
-    joblib.dump(clf, model_file_name)
+    joblib.dump(clf, model_file_name, protocol=2)
 
     return 'Success'
 
